@@ -1,10 +1,10 @@
 ---
 layout: default
-title:  "lancelodliuµÄ±Ê¼Ç±¾"
+title:  "lancelodliuçš„ç¬”è®°æœ¬"
 ---
 
 <ul>
-¡¡¡¡{% for post in site.posts %}
-¡¡¡¡¡¡¡¡<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-¡¡¡¡{% endfor %}
+ã€€ã€€{% for post in site.posts %}
+ã€€ã€€ã€€ã€€<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+ã€€ã€€{% endfor %}
 </ul>
