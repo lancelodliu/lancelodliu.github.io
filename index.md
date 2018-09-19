@@ -1,6 +1,5 @@
 ---
 layout: default
-title: site.title
 ---
 
 # 文章
