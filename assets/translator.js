@@ -34,7 +34,7 @@ const TRANSLATIONS = {
   "Uniques Vault": "传奇宝库",
   "Royal Access Chamber": "皇家谒见厅",
   "Extraction Chamber": "萃取厅",
-  "Atziri's Chamber": "阿兹里的殿堂"
+  "Atziri's Chamber": "阿兹里的殿堂",
 
     // Medallions (徽章中英对照列表)
     "Juatalotli's Medallion": '华塔洛蒂的纹章',
