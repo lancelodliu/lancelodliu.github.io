@@ -20,7 +20,7 @@ const TRANSLATIONS = {
   "Synthflesh Lab": "合成血肉实验室",
   "Flesh Surgeon": "血肉医师",
   "Alchemy Lab": "炼金实验室",
-  "Thaumaturge": "奇术师",,
+  "Thaumaturge": "奇术师",
   "Thaumaturge's": "奇术师",
   "Golem Works": "魔像工坊",
   "Corruption Chamber": "腐化之室",
