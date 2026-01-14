@@ -13,9 +13,9 @@ This directory contains JSON translation files for the PoE2 Temple Planner.
 
 ## File Structure
 
-- **temple-rooms.json** - Temple room names (26 entries)
+- **temple-rooms.json** - Temple room names (32 entries)
   - Contains translations for all temple room types
-  - Examples: Path, Garrison, Commander, Treasure Vault, etc.
+  - Examples: Path, Garrison, Commander, Treasure Vault, Thaumaturge's, etc.
 
 - **medallions.json** - Medallion names (10 entries)
   - Contains translations for all medallion types
@@ -25,9 +25,9 @@ This directory contains JSON translation files for the PoE2 Temple Planner.
   - Contains translations for UI elements, buttons, labels
   - Examples: Monster, Active Bonuses, How to Use, etc.
 
-- **modifiers.json** - Monster/chest/effect modifiers (48 entries)
+- **modifiers.json** - Monster/chest/effect modifiers (99 entries)
   - Contains translations for game modifiers and effects
-  - Examples: "10% increased number of Monster Packs", "Rare Monsters have 15% increased Effectiveness", etc.
+  - Examples: "10% increased number of Monster Packs", "15% increased Rare Monster effectiveness", etc.
 
 ## Adding New Translations
 
@@ -52,7 +52,7 @@ To add new translations:
 
 ## Total Translations
 
-Currently: **123 translations** across all files
+Currently: **179 translations** across all files
 
 To get the exact count, run:
 ```bash
