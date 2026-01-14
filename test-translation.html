@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Test - PoE2 Temple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        h1 {
+            color: #ffd700;
+        }
+        .test-section {
+            background-color: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .room-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .room-item {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #555;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+        .tooltip:hover::after {
+            content: attr(title);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #555;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            z-index: 1;
+        }
+    </style>
+    <script src="/assets/translator.js"></script>
+</head>
+<body>
+    <h1>PoE2 Temple Translation Test</h1>
+    
+    <div class="test-section">
+        <h2>Static Content Translation</h2>
+        <p>These room names should be automatically translated:</p>
+        <div class="room-list">
+            <div class="room-item">Guardhouse</div>
+            <div class="room-item">Barracks</div>
+            <div class="room-item">Hall of War</div>
+            <div class="room-item">Commander's Chamber</div>
+            <div class="room-item">Arsenal</div>
+            <div class="room-item">Bronzeworks</div>
+            <div class="room-item">Dynamo</div>
+            <div class="room-item">Spymaster's Study</div>
+            <div class="room-item">Chamber of Souls</div>
+            <div class="room-item">Altar of Sacrifice</div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Tooltip Translation Test</h2>
+        <p>Hover over these elements to see translated tooltips:</p>
+        <span class="tooltip" title="Guardhouse">Hover me (Guardhouse)</span>
+        <span class="tooltip" title="Juatalotli's Medallion">Hover me (Medallion)</span>
+        <span class="tooltip" title="Altar of Sacrifice">Hover me (Altar)</span>
+    </div>
+
+    <div class="test-section">
+        <h2>Dynamic Content Translation</h2>
+        <button onclick="addDynamicRoom()">Add Dynamic Room</button>
+        <button onclick="showModal()">Show Modal</button>
+        <div id="dynamic-content"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Medallion Names</h2>
+        <div class="room-list">
+            <div class="room-item">Juatalotli's Medallion</div>
+            <div class="room-item">Hayoxi's Medallion</div>
+            <div class="room-item">Xopec's Medallion</div>
+            <div class="room-item">Zantipi's Medallion</div>
+        </div>
+    </div>
+
+    <script>
+        function addDynamicRoom() {
+            const container = document.getElementById('dynamic-content');
+            const rooms = [
+                'Crimson Hall',
+                'Thaumaturge\'s Laboratory',
+                'Surgeon\'s Ward',
+                'Sealed Vault',
+                'Workshop'
+            ];
+            const randomRoom = rooms[Math.floor(Math.random() * rooms.length)];
+            const div = document.createElement('div');
+            div.className = 'room-item';
+            div.textContent = randomRoom;
+            div.title = randomRoom + ' (tooltip)';
+            container.appendChild(div);
+        }
+
+        function showModal() {
+            const modal = document.createElement('div');
+            modal.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #2a2a2a; padding: 30px; border-radius: 8px; border: 2px solid #ffd700; z-index: 1000;';
+            modal.innerHTML = `
+                <h3>Place Room</h3>
+                <p>Select a room to place:</p>
+                <div class="room-list">
+                    <div class="room-item">Path</div>
+                    <div class="room-item">Guardhouse</div>
+                    <div class="room-item">Arsenal</div>
+                </div>
+                <button onclick="this.parentElement.remove()">Close</button>
+            `;
+            
+            const overlay = document.createElement('div');
+            overlay.style.cssText = 'position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 999;';
+            overlay.onclick = () => {
+                overlay.remove();
+                modal.remove();
+            };
+            
+            document.body.appendChild(overlay);
+            document.body.appendChild(modal);
+        }
+    </script>
+</body>
+</html>
