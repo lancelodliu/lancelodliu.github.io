@@ -25,7 +25,7 @@ This directory contains JSON translation files for the PoE2 Temple Planner.
   - Contains translations for UI elements, buttons, labels
   - Examples: Monster, Active Bonuses, How to Use, etc.
 
-- **modifiers.json** - Monster/chest/effect modifiers (98 entries)
+- **modifiers.json** - Monster/chest/effect modifiers (99 entries)
   - Contains translations for game modifiers and effects
   - Examples: "10% increased number of Monster Packs", "15% increased Rare Monster effectiveness", etc.
 
@@ -52,7 +52,7 @@ To add new translations:
 
 ## Total Translations
 
-Currently: **178 translations** across all files
+Currently: **179 translations** across all files
 
 To get the exact count, run:
 ```bash
