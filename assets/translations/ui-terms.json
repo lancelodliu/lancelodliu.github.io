@@ -1,6 +1,9 @@
 {
   "Room": "房间",
   "Tier": "等阶",
+  "Monster": "怪物",
+  "Diminishing Returns applied (4+ rooms of this type)": "已应用递减收益 (4+ 同类型房间)",
+  "Diminishing Returns (DR): Sorted by tier (highest first) Multipliers: 1×, 1×, 1×, 0.9×, 0.81×, 0.729×, 0.656×, 0.59×, 0.531×, 0.478×, 0.43×, 0.387×, 0.349×, 0.314×, 0.282×...": "递减收益（DR）：按阶级排序（从高到低）倍率：1×、1×、1×、0.9×、0.81×、0.729×、0.656×、0.59×、0.531×、0.478×、0.43×、0.387×、0.349×、0.314×、0.282×……",
   "Loot": "战利品",
   "Other": "其他",
   "Items": "物品",
@@ -25,6 +28,7 @@
   "Chains": "链条",
   "Total": "总计",
   "Rooms": "房间",
+  "rooms": "房间",
   "Room Cards": "房间卡片",
   "Deal": "发牌",
   "Destabilize": "不稳定化",
@@ -36,5 +40,19 @@
   "Changelog": "更新日志",
   "Feedback": "反馈",
   "PoE2 Tools": "流放之路2工具",
-  "Atziri Temple": "阿兹里神庙"
+  "Atziri Temple": "阿兹里神庙",
+  "Click": "左键",
+  "Select cell / Place room": "选择单元格 / 放置房间",
+  "1-9": "1-9",
+  "Quick place (when cell selected)": "快速放置（选中单元格时）",
+  "Right-click": "右键",
+  "Remove room": "移除房间",
+  "Hold Right": "长按右键",
+  "Eraser brush": "橡皮擦工具",
+  "Shift+Click": "Shift+点击",
+  "Upgrade tier manually": "手动提升等阶",
+  "Shift+Right": "Shift+右键",
+  "Downgrade tier manually": "手动降低等阶",
+  "Esc": "Esc",
+  "Clear selection": "清除选择"
 }
