@@ -18,7 +18,7 @@
     try {
       const response = await fetch(path);
       if (!response.ok) {
-        console.warn(`Failed to load translation file: ${path}`);
+        console.warn(`Failed to load translation file: ${path} (${response.status} ${response.statusText})`);
         return {};
       }
       return await response.json();

@@ -40,7 +40,12 @@ To add new translations:
 
 ## Total Translations
 
-Currently: **123 translations** across all files (26 + 10 + 39 + 48 = 123)
+Currently: **123 translations** across all files
+
+To get the exact count, run:
+```bash
+jq 'length' assets/translations/*.json | awk '{sum+=$1} END {print sum}'
+```
 
 ## How It Works
 
