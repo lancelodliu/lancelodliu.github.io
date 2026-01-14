@@ -78,14 +78,20 @@ setTimeout(translateDocument, 1500);
 // Pass 4+: Continuous via MutationObserver
 ```
 
-#### 5. Efficient Pattern Matching with Case-Sensitive Matching
+#### 5. Longest Match Priority with Efficient Pattern Matching
+**Translation priority is based on the length of the English original text.**
+
+The system ensures longer phrases always match before shorter substrings:
+- "60% increased number of Magic Monsters" matches before "Magic Monsters" or "Monsters"
+- "Thaumaturge's" matches before "Thaumaturge"
+- Prevents incorrect partial translations
+
 ```javascript
-// Sorts translations by length (longest first)
-// Prevents partial matches (e.g., "Hall" before "Hall of War")
+// Sort by length (longest first) to ensure longest match priority
 // IMPORTANT: Case-sensitive matching enforced (no 'i' flag)
 const translationPattern = new RegExp(
   Object.keys(TRANSLATIONS)
-    .sort((a, b) => b.length - a.length)
+    .sort((a, b) => b.length - a.length) // Longest first - critical for match priority
     .map(key => key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
     .join('|'),
   'g' // Case-sensitive only - strictly enforced
@@ -96,6 +102,8 @@ if (translationPattern.flags.includes('i')) {
   throw new Error('Translation pattern must be case-sensitive');
 }
 ```
+
+**Performance:** The regex pattern is compiled once at initialization, providing O(1) lookup speed for all subsequent translations. Sorting happens only once during startup.
 
 ### How It Works
 

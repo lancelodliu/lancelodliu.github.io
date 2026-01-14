@@ -49,9 +49,15 @@
     // Create a regex pattern for efficient matching
     // IMPORTANT: Case-sensitive matching is REQUIRED (no 'i' flag)
     // Translations must match exact case to prevent incorrect translations
+    // 
+    // LONGEST MATCH PRIORITY: Keys are sorted by length (longest first) to ensure
+    // longer phrases match before shorter ones. For example:
+    // "60% increased number of Magic Monsters" matches before "Monsters"
+    // 
+    // Performance: Pattern is compiled once at initialization for O(1) lookup speed
     translationPattern = new RegExp(
       Object.keys(TRANSLATIONS)
-        .sort((a, b) => b.length - a.length) // Sort by length (longest first) to match longer strings first
+        .sort((a, b) => b.length - a.length) // Sort by length (longest first) - ensures longest match priority
         .map(key => key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')) // Escape special regex characters
         .join('|'),
       'g' // Case-sensitive (no 'i' flag) - DO NOT ADD 'i' flag here
