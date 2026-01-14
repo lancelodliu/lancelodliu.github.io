@@ -58,6 +58,7 @@
     );
     
     // Validate that the pattern is case-sensitive
+    // This is defensive programming to prevent accidental modification in the future
     if (translationPattern.flags.includes('i')) {
       console.error('PoE2 Temple Translator: ERROR - Translation pattern must be case-sensitive!');
       throw new Error('Translation pattern must not have the case-insensitive flag');
@@ -67,8 +68,7 @@
   }
 
   /**
-   * Translate text content using case-sensitive matching
-   * Note: All translations strictly follow case-sensitive matching rules
+   * Translates text content using strict case-sensitive matching rules
    */
   function translateText(text) {
     if (!text || typeof text !== 'string' || !translationPattern) return text;
