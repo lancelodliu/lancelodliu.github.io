@@ -2,6 +2,15 @@
 
 This directory contains JSON translation files for the PoE2 Temple Planner.
 
+## Important: Case-Sensitive Matching
+
+**All translations strictly follow case-sensitive matching rules.**
+
+- "Path" and "path" are treated as different strings
+- Only exact case matches will be translated
+- This is intentional to prevent incorrect translations
+- The regex pattern is validated at runtime to ensure no case-insensitive flag is present
+
 ## File Structure
 
 - **temple-rooms.json** - Temple room names (26 entries)
@@ -26,8 +35,11 @@ To add new translations:
 
 1. Choose the appropriate JSON file based on the category
 2. Add the English string as the key and Chinese translation as the value
-3. Ensure proper JSON formatting (use commas between entries, no trailing comma on last entry)
-4. Test by loading the page and checking the console for the total number of loaded translations
+3. **IMPORTANT**: Ensure the English key matches the exact case used in the application
+4. Ensure proper JSON formatting (use commas between entries, no trailing comma on last entry)
+5. Test by loading the page and checking the console for the total number of loaded translations
+
+**Case-Sensitivity Note**: Translation keys are case-sensitive. "Path", "path", and "PATH" would be treated as three different translation keys.
 
 ## JSON Format
 

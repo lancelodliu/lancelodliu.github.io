@@ -47,19 +47,28 @@
     TRANSLATIONS = Object.assign({}, ...translations);
 
     // Create a regex pattern for efficient matching
+    // IMPORTANT: Case-sensitive matching is REQUIRED (no 'i' flag)
+    // Translations must match exact case to prevent incorrect translations
     translationPattern = new RegExp(
       Object.keys(TRANSLATIONS)
         .sort((a, b) => b.length - a.length) // Sort by length (longest first) to match longer strings first
         .map(key => key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')) // Escape special regex characters
         .join('|'),
-      'g'
+      'g' // Case-sensitive (no 'i' flag) - DO NOT ADD 'i' flag here
     );
+    
+    // Validate that the pattern is case-sensitive
+    if (translationPattern.flags.includes('i')) {
+      console.error('PoE2 Temple Translator: ERROR - Translation pattern must be case-sensitive!');
+      throw new Error('Translation pattern must not have the case-insensitive flag');
+    }
 
-    console.log('PoE2 Temple Translator: Loaded', Object.keys(TRANSLATIONS).length, 'translations');
+    console.log('PoE2 Temple Translator: Loaded', Object.keys(TRANSLATIONS).length, 'translations (case-sensitive matching)');
   }
 
   /**
-   * Translate text content
+   * Translate text content using case-sensitive matching
+   * Note: All translations strictly follow case-sensitive matching rules
    */
   function translateText(text) {
     if (!text || typeof text !== 'string' || !translationPattern) return text;

@@ -23,7 +23,22 @@ A non-invasive JavaScript translation layer that translates English UI strings t
 
 ### Key Features
 
-#### 1. Comprehensive Translation Coverage
+#### 1. Case-Sensitive Translation Matching (STRICT)
+**All translations strictly follow case-sensitive matching rules.**
+
+- Translation keys match exact case only
+- "Path" and "path" are treated as different strings
+- Runtime validation prevents case-insensitive modifications
+- Ensures accurate and predictable translations
+
+```javascript
+// Examples:
+'Path' → '通路' ✓ (exact match)
+'path' → 'path' ✗ (case mismatch, not translated)
+'PATH' → 'PATH' ✗ (case mismatch, not translated)
+```
+
+#### 2. Comprehensive Translation Coverage
 ```javascript
 // 59 Temple Rooms
 'Guardhouse' → '护卫间'
@@ -42,14 +57,14 @@ A non-invasive JavaScript translation layer that translates English UI strings t
 // ... and more
 ```
 
-#### 2. Dynamic Content Handling
+#### 3. Dynamic Content Handling
 Uses MutationObserver to monitor:
 - **childList**: New elements added to DOM (modals, tooltips)
 - **attributes**: Changes to title, placeholder, alt, aria-label
 - **characterData**: Text content changes
 - **subtree**: All descendant changes
 
-#### 3. Multi-Pass Translation Strategy
+#### 4. Multi-Pass Translation Strategy
 ```javascript
 // Pass 1: DOMContentLoaded
 document.addEventListener('DOMContentLoaded', translateDocument);
@@ -63,17 +78,23 @@ setTimeout(translateDocument, 1500);
 // Pass 4+: Continuous via MutationObserver
 ```
 
-#### 4. Efficient Pattern Matching
+#### 5. Efficient Pattern Matching with Case-Sensitive Matching
 ```javascript
 // Sorts translations by length (longest first)
 // Prevents partial matches (e.g., "Hall" before "Hall of War")
+// IMPORTANT: Case-sensitive matching enforced (no 'i' flag)
 const translationPattern = new RegExp(
   Object.keys(TRANSLATIONS)
     .sort((a, b) => b.length - a.length)
     .map(key => key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
     .join('|'),
-  'g'
+  'g' // Case-sensitive only - strictly enforced
 );
+
+// Runtime validation ensures case-sensitivity is maintained
+if (translationPattern.flags.includes('i')) {
+  throw new Error('Translation pattern must be case-sensitive');
+}
 ```
 
 ### How It Works
